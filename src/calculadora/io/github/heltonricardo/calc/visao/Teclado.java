@@ -1,7 +1,8 @@
 package calculadora.io.github.heltonricardo.calc.visao;
 
 import java.awt.Color;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
@@ -13,32 +14,42 @@ public class Teclado extends JPanel {
 	private final Color LARANJA = new Color(242, 163, 60);
 
 	public Teclado() {
-		setLayout(new GridLayout(5, 4));
 		
-		add(new Botao("AC", CINZA_ESCURO));
-		add(new Botao("+/-", CINZA_ESCURO));
-		add(new Botao("%", CINZA_ESCURO));
-		add(new Botao("÷", LARANJA));
+		GridBagLayout layout = new GridBagLayout();
 		
-		add(new Botao("7", CINZA_CLARO));
-		add(new Botao("8", CINZA_CLARO));
-		add(new Botao("9", CINZA_CLARO));
-		add(new Botao("x", LARANJA));
+		setLayout(layout);
 		
-		add(new Botao("4", CINZA_CLARO));
-		add(new Botao("5", CINZA_CLARO));
-		add(new Botao("6", CINZA_CLARO));
-		add(new Botao("-", LARANJA));
+		adicionarBotao("AC", CINZA_ESCURO, 0, 0);
+		adicionarBotao("+/-", CINZA_ESCURO, 0, 1);
+		adicionarBotao("%", CINZA_ESCURO, 0, 2);
+		adicionarBotao("/", LARANJA, 0, 3);
 		
-		add(new Botao("1", CINZA_CLARO));
-		add(new Botao("2", CINZA_CLARO));
-		add(new Botao("3", CINZA_CLARO));
-		add(new Botao("+", LARANJA));
+		adicionarBotao("7", CINZA_CLARO, 1, 0);
+		adicionarBotao("8", CINZA_CLARO, 1, 1);
+		adicionarBotao("9", CINZA_CLARO, 1, 2);
+		adicionarBotao("x", LARANJA, 1, 3);
 		
-		add(new Botao("0", CINZA_CLARO));
-		add(new Botao(",", CINZA_CLARO));
-		add(new Botao("=", LARANJA));
+		adicionarBotao("4", CINZA_CLARO, 2, 0);
+		adicionarBotao("5", CINZA_CLARO, 2, 1);
+		adicionarBotao("6", CINZA_CLARO, 2, 2);
+		adicionarBotao("-", LARANJA, 2, 3);
 		
+		adicionarBotao("1", CINZA_CLARO, 3, 0);
+		adicionarBotao("2", CINZA_CLARO, 3, 1);
+		adicionarBotao("3", CINZA_CLARO, 3, 2);
+		adicionarBotao("+", LARANJA, 3, 3);
+		
+		adicionarBotao("0", CINZA_CLARO, 4, 0);
+		adicionarBotao(",", CINZA_CLARO, 4, 2);
+		adicionarBotao("=", LARANJA, 4, 3);
+		
+	}
 
+	private void adicionarBotao(String texto, Color cor, int x, int y) {
+		Botao botao = new Botao(texto, cor);
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = y;
+		c.gridy = x;
+		add(botao, c);
 	}
 }
