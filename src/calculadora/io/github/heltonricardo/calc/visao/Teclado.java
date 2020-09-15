@@ -16,14 +16,12 @@ public class Teclado extends JPanel {
 	public Teclado() {
 		
 		GridBagLayout layout = new GridBagLayout();
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.BOTH;
-		
-		c.weightx = 1;
-		c.weighty = 1;
-		
 		setLayout(layout);
 		
+		GridBagConstraints c = new GridBagConstraints();
+		c.weightx = 1;
+		c.weighty = 1;
+		c.fill = GridBagConstraints.BOTH;
 		
 		c.gridwidth = 2;
 		adicionarBotao("AC", CINZA_ESCURO, c, 0, 0);
