@@ -16,38 +16,46 @@ public class Teclado extends JPanel {
 	public Teclado() {
 		
 		GridBagLayout layout = new GridBagLayout();
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.BOTH;
+		
+		c.weightx = 1;
+		c.weighty = 1;
 		
 		setLayout(layout);
 		
-		adicionarBotao("AC", CINZA_ESCURO, 0, 0);
-		adicionarBotao("+/-", CINZA_ESCURO, 0, 1);
-		adicionarBotao("%", CINZA_ESCURO, 0, 2);
-		adicionarBotao("/", LARANJA, 0, 3);
 		
-		adicionarBotao("7", CINZA_CLARO, 1, 0);
-		adicionarBotao("8", CINZA_CLARO, 1, 1);
-		adicionarBotao("9", CINZA_CLARO, 1, 2);
-		adicionarBotao("x", LARANJA, 1, 3);
+		c.gridwidth = 2;
+		adicionarBotao("AC", CINZA_ESCURO, c, 0, 0);
+		c.gridwidth = 1;
+		adicionarBotao("±", CINZA_ESCURO, c, 0, 2);
+		adicionarBotao("÷", LARANJA, c, 0, 3);
 		
-		adicionarBotao("4", CINZA_CLARO, 2, 0);
-		adicionarBotao("5", CINZA_CLARO, 2, 1);
-		adicionarBotao("6", CINZA_CLARO, 2, 2);
-		adicionarBotao("-", LARANJA, 2, 3);
+		adicionarBotao("7", CINZA_CLARO, c, 1, 0);
+		adicionarBotao("8", CINZA_CLARO, c, 1, 1);
+		adicionarBotao("9", CINZA_CLARO, c, 1, 2);
+		adicionarBotao("×", LARANJA, c, 1, 3);
 		
-		adicionarBotao("1", CINZA_CLARO, 3, 0);
-		adicionarBotao("2", CINZA_CLARO, 3, 1);
-		adicionarBotao("3", CINZA_CLARO, 3, 2);
-		adicionarBotao("+", LARANJA, 3, 3);
+		adicionarBotao("4", CINZA_CLARO, c, 2, 0);
+		adicionarBotao("5", CINZA_CLARO, c, 2, 1);
+		adicionarBotao("6", CINZA_CLARO, c, 2, 2);
+		adicionarBotao("-", LARANJA, c, 2, 3);
 		
-		adicionarBotao("0", CINZA_CLARO, 4, 0);
-		adicionarBotao(",", CINZA_CLARO, 4, 2);
-		adicionarBotao("=", LARANJA, 4, 3);
+		adicionarBotao("1", CINZA_CLARO, c, 3, 0);
+		adicionarBotao("2", CINZA_CLARO, c, 3, 1);
+		adicionarBotao("3", CINZA_CLARO, c, 3, 2);
+		adicionarBotao("+", LARANJA, c, 3, 3);
+		
+		c.gridwidth = 2;
+		adicionarBotao("0", CINZA_CLARO, c, 4, 0);
+		c.gridwidth = 1;
+		adicionarBotao(",", CINZA_CLARO, c, 4, 2);
+		adicionarBotao("=", LARANJA, c, 4, 3);
 		
 	}
 
-	private void adicionarBotao(String texto, Color cor, int x, int y) {
+	private void adicionarBotao(String texto, Color cor, GridBagConstraints c, int x, int y) {
 		Botao botao = new Botao(texto, cor);
-		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = y;
 		c.gridy = x;
 		add(botao, c);
