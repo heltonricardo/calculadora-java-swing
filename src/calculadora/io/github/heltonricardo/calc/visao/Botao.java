@@ -16,5 +16,6 @@ public class Botao extends JButton {
 		setForeground(Color.WHITE);
 		setBackground(cor);
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		setFocusable(false);
 	}
 }
