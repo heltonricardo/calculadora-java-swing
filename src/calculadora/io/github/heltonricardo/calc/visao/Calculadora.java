@@ -11,10 +11,11 @@ public class Calculadora extends JFrame {
 	public Calculadora() {
 		organizarLayout();
 		
-		setVisible(true);
+		setResizable(false);
 		setSize(232, 322);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
 	}
 	
 	private void organizarLayout() {
