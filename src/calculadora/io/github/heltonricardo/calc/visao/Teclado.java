@@ -3,11 +3,14 @@ package calculadora.io.github.heltonricardo.calc.visao;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Teclado extends JPanel {
+public class Teclado extends JPanel implements ActionListener {
 	
 	private final Color CINZA_ESCURO = new Color(68, 69, 68);
 	private final Color CINZA_CLARO = new Color(97, 100, 99);
@@ -56,6 +59,15 @@ public class Teclado extends JPanel {
 		Botao botao = new Botao(texto, cor);
 		c.gridx = y;
 		c.gridy = x;
+		botao.addActionListener(this);
 		add(botao, c);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() instanceof JButton) {
+			JButton botao = (JButton) e.getSource();
+			System.out.println(botao.getText());
+		}
 	}
 }
