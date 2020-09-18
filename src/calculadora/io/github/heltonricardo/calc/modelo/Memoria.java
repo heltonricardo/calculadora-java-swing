@@ -12,6 +12,9 @@ public class Memoria {
 	private static final Memoria instancia = new Memoria();
 	private final List<MemoriaObservador> observadores = new ArrayList<>();
 	private String textoAtual = "";
+	private String textoBuffer = "";
+	private boolean substituir = false;
+	private TipoComando operacao = null;
 	
 	private Memoria() {}
 	
@@ -45,7 +48,7 @@ public class Memoria {
 				return TipoComando.MULT;
 			if (textoBotao.equalsIgnoreCase("÷"))
 				return TipoComando.DIV;
-			if (textoBotao.equalsIgnoreCase(","))
+			if (textoBotao.equalsIgnoreCase(",") && !textoAtual.contains(","))
 				return TipoComando.VIRGULA;
 			if (textoBotao.equalsIgnoreCase("±"))
 				return TipoComando.ALTER;
@@ -57,8 +60,21 @@ public class Memoria {
 	
 	public void processarValor(String textoBotao) {
 		TipoComando tipo = detectarTipo(textoBotao);
-		System.out.println(tipo);
-		textoAtual += textoBotao;
+		if (tipo == null) return;
+		
+		switch (tipo) {
+			case ZERAR:
+				textoAtual = textoBuffer = "";
+				substituir = false;
+				operacao = null;
+				break;
+			case NUMERO: case VIRGULA:
+				textoAtual = substituir ? textoBotao : textoAtual + textoBotao;
+				substituir = false;
+				break;
+			default: return;
+		}
+		
 		observadores.stream().forEach(o -> o.valorAlterado(getTexto()));
 	}
 }
