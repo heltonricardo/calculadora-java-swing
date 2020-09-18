@@ -72,9 +72,37 @@ public class Memoria {
 				textoAtual = substituir ? textoBotao : textoAtual + textoBotao;
 				substituir = false;
 				break;
-			default: return;
+			default:
+				substituir = true;
+				textoAtual = obterResultadoOperacao();
+				textoBuffer = textoAtual;
+				operacao = tipo;
 		}
 		
 		observadores.stream().forEach(o -> o.valorAlterado(getTexto()));
+	}
+
+	private String obterResultadoOperacao() {
+		
+		if (operacao == null)
+			return textoAtual;
+		
+		double numeroAtual = Double.parseDouble(textoAtual.replace(",", "."));
+		double numeroBuffer = Double.parseDouble(textoBuffer.replace(",", "."));
+		
+		double resultado = numeroBuffer;
+		
+		switch (operacao) {
+			case SOMA: resultado += numeroAtual; break;
+			case SUB: resultado -= numeroAtual; break;
+			case MULT: resultado *= numeroAtual; break;
+			case DIV: resultado = numeroAtual != 0 ? resultado / numeroAtual : 0;
+			default: break;
+		}
+		
+		String resultadoTexto = Double.toString(resultado).replace(".", ",");
+		boolean inteiro = resultadoTexto.endsWith(",0");
+		
+		return inteiro ? resultadoTexto.replace(",0", "") : resultadoTexto;
 	}
 }
