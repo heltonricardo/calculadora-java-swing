@@ -72,6 +72,11 @@ public class Memoria {
 				textoAtual = substituir ? textoBotao : textoAtual + textoBotao;
 				substituir = false;
 				break;
+			case ALTER:
+				if (!textoAtual.isEmpty())
+					textoAtual = textoAtual.startsWith("-") ?
+							textoAtual.replace("-", "") : "-" + textoAtual;
+				break;
 			default:
 				substituir = true;
 				textoAtual = obterResultadoOperacao();
@@ -84,7 +89,7 @@ public class Memoria {
 
 	private String obterResultadoOperacao() {
 		
-		if (operacao == null)
+		if (operacao == null || operacao == TipoComando.IGUAL)
 			return textoAtual;
 		
 		double numeroAtual = Double.parseDouble(textoAtual.replace(",", "."));
