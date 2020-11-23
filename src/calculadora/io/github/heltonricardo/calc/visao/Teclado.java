@@ -22,6 +22,7 @@ public class Teclado extends JPanel implements ActionListener {
 		
 		GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);
+		setBackground(Color.BLACK);
 		
 		GridBagConstraints c = new GridBagConstraints();
 		c.weightx = 1;
@@ -31,13 +32,13 @@ public class Teclado extends JPanel implements ActionListener {
 		c.gridwidth = 2;
 		adicionarBotao("AC", CINZA_ESCURO, c, 0, 0);
 		c.gridwidth = 1;
-		adicionarBotao("±", CINZA_ESCURO, c, 0, 2);
-		adicionarBotao("÷", LARANJA, c, 0, 3);
+		adicionarBotao("+/-", CINZA_ESCURO, c, 0, 2);
+		adicionarBotao("/", LARANJA, c, 0, 3);
 		
 		adicionarBotao("7", CINZA_CLARO, c, 1, 0);
 		adicionarBotao("8", CINZA_CLARO, c, 1, 1);
 		adicionarBotao("9", CINZA_CLARO, c, 1, 2);
-		adicionarBotao("×", LARANJA, c, 1, 3);
+		adicionarBotao("*", LARANJA, c, 1, 3);
 		
 		adicionarBotao("4", CINZA_CLARO, c, 2, 0);
 		adicionarBotao("5", CINZA_CLARO, c, 2, 1);

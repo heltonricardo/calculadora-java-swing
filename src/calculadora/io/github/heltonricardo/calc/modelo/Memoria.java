@@ -44,13 +44,13 @@ public class Memoria {
 				return TipoComando.SOMA;
 			if (textoBotao.equalsIgnoreCase("-"))
 				return TipoComando.SUB;
-			if (textoBotao.equalsIgnoreCase("×"))
+			if (textoBotao.equalsIgnoreCase("*"))
 				return TipoComando.MULT;
-			if (textoBotao.equalsIgnoreCase("÷"))
+			if (textoBotao.equalsIgnoreCase("/"))
 				return TipoComando.DIV;
 			if (textoBotao.equalsIgnoreCase(",") && !textoAtual.contains(","))
 				return TipoComando.VIRGULA;
-			if (textoBotao.equalsIgnoreCase("±"))
+			if (textoBotao.equalsIgnoreCase("+/-"))
 				return TipoComando.ALTER;
 			if (textoBotao.equalsIgnoreCase("="))
 				return TipoComando.IGUAL;
